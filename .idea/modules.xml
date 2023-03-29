@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ecommerce-api-gateway/ecommerce-api-gateway.iml" filepath="$PROJECT_DIR$/ecommerce-api-gateway/ecommerce-api-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/ecommerce-order-service/ecommerce-order-service.iml" filepath="$PROJECT_DIR$/ecommerce-order-service/ecommerce-order-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ecommerce-product-service/ecommerce-product-service.iml" filepath="$PROJECT_DIR$/ecommerce-product-service/ecommerce-product-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/ecommerce-product-service/ecommerce-produit-service.iml" filepath="$PROJECT_DIR$/ecommerce-product-service/ecommerce-produit-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ecommerce-sale-service/ecommerce-sale-service.iml" filepath="$PROJECT_DIR$/ecommerce-sale-service/ecommerce-sale-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/ecommerce-service-registry/ecommerce-service-registry.iml" filepath="$PROJECT_DIR$/ecommerce-service-registry/ecommerce-service-registry.iml" />
       <module fileurl="file://$PROJECT_DIR$/ecommerce-user-service/ecommerce-user-service.iml" filepath="$PROJECT_DIR$/ecommerce-user-service/ecommerce-user-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/ecommerce-sale-service/ecommerce-vente-service.iml" filepath="$PROJECT_DIR$/ecommerce-sale-service/ecommerce-vente-service.iml" />
