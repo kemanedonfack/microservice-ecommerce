@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/ecommerce-user-service/pom.xml" />
         <option value="$PROJECT_DIR$/ecommerce-vente-service/pom.xml" />
         <option value="$PROJECT_DIR$/ecommerce-api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/ecommerce-product-service/pom.xml" />
+        <option value="$PROJECT_DIR$/ecommerce-sale-service/pom.xml" />
       </list>
     </option>
   </component>

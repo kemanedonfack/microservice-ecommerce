@@ -13,7 +13,7 @@ public class RoutingConfig {
         return builder.routes()
                 //swagger documentation
                 .route("ecommerce-produit-service", r ->r.path("/produit/**")
-                        .filters(f -> f.rewritePath("^/produit", ""))
+                        .filters(f -> f.rewritePath("^/product", ""))
                         .uri("http://localhost:8083/"))
                 .route("ecommerce-user-service", r ->r.path("/user/**")
                         .filters(f -> f.rewritePath("^/user", ""))

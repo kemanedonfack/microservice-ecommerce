@@ -15,7 +15,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ecommerce-api-gateway" target="11" />
+      <module name="ecommerce-product-service" target="11" />
       <module name="ecommerce-produit-service" target="11" />
+      <module name="ecommerce-sale-service" target="11" />
       <module name="ecommerce-service-registry" target="11" />
       <module name="ecommerce-user-service" target="11" />
       <module name="ecommerce-vente-service" target="11" />
@@ -24,7 +26,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ecommerce-api-gateway" options="-parameters" />
+      <module name="ecommerce-product-service" options="-parameters" />
       <module name="ecommerce-produit-service" options="-parameters" />
+      <module name="ecommerce-sale-service" options="-parameters" />
       <module name="ecommerce-service-registry" options="-parameters" />
       <module name="ecommerce-user-service" options="-parameters" />
       <module name="ecommerce-vente-service" options="-parameters" />

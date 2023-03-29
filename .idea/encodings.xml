@@ -3,13 +3,13 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/ecommerce-api-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ecommerce-api-gateway/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ecommerce-produit-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ecommerce-produit-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ecommerce-product-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ecommerce-product-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ecommerce-sale-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ecommerce-sale-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ecommerce-service-registry/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ecommerce-service-registry/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ecommerce-user-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ecommerce-user-service/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ecommerce-vente-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ecommerce-vente-service/src/main/resources" charset="UTF-8" />
   </component>
 </project>
