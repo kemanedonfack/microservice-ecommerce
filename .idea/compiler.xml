@@ -11,10 +11,12 @@
         <module name="ecommerce-produit-service" />
         <module name="ecommerce-user-service" />
         <module name="ecommerce-vente-service" />
+        <module name="ecommerce-order-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ecommerce-api-gateway" target="11" />
+      <module name="ecommerce-order-service" target="11" />
       <module name="ecommerce-product-service" target="11" />
       <module name="ecommerce-produit-service" target="11" />
       <module name="ecommerce-sale-service" target="11" />
@@ -26,6 +28,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ecommerce-api-gateway" options="-parameters" />
+      <module name="ecommerce-order-service" options="-parameters" />
       <module name="ecommerce-product-service" options="-parameters" />
       <module name="ecommerce-produit-service" options="-parameters" />
       <module name="ecommerce-sale-service" options="-parameters" />
