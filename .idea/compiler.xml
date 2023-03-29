@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ecommerce-api-gateway" />
+        <module name="ecommerce-service-registry" />
+        <module name="ecommerce-produit-service" />
+        <module name="ecommerce-user-service" />
+        <module name="ecommerce-vente-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ecommerce-api-gateway" target="11" />
+      <module name="ecommerce-produit-service" target="11" />
+      <module name="ecommerce-service-registry" target="11" />
+      <module name="ecommerce-user-service" target="11" />
+      <module name="ecommerce-vente-service" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ecommerce-api-gateway" options="-parameters" />
+      <module name="ecommerce-produit-service" options="-parameters" />
+      <module name="ecommerce-service-registry" options="-parameters" />
+      <module name="ecommerce-user-service" options="-parameters" />
+      <module name="ecommerce-vente-service" options="-parameters" />
+    </option>
+  </component>
+</project>
