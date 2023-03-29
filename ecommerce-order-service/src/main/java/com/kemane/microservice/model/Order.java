@@ -16,7 +16,7 @@ public class Order {
     private int id;
 
     @Column(name= "customer_name")
-    private String clientName;
+    private String customerName;
 
     @Column(name= "product_name")
     private String productName;
