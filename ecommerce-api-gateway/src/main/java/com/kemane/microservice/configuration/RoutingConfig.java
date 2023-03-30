@@ -11,16 +11,29 @@ public class RoutingConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
+                // routes
+                .route("ecommerce-product-service", r ->r.path("/api/v1/products/**")
+                        .uri("http://localhost:8083/"))
+                .route("ecommerce-user-service", r ->r.path("/api/v1/users/**")
+                        .uri("http://localhost:8084/"))
+                .route("ecommerce-sale-service", r ->r.path("/api/v1/sales/**")
+                        .uri("http://localhost:8085/"))
+                .route("ecommerce-order-service", r ->r.path("/api/v1/orders/**")
+                        .uri("http://localhost:8086/"))
+
                 //swagger documentation
-                .route("ecommerce-produit-service", r ->r.path("/produit/**")
-                        .filters(f -> f.rewritePath("^/product", ""))
+                /*.route("ecommerce-product-service", r ->r.path("/api/v1/products/**")
+                        .filters(f -> f.rewritePath("^/api/v1/products", ""))
                         .uri("http://localhost:8083/"))
                 .route("ecommerce-user-service", r ->r.path("/user/**")
                         .filters(f -> f.rewritePath("^/user", ""))
                         .uri("http://localhost:8084/"))
-                .route("ecommerce-vente-service", r ->r.path("/vente/**")
-                        .filters(f -> f.rewritePath("^/vente", ""))
+                .route("ecommerce-sale-service", r ->r.path("/sale/**")
+                        .filters(f -> f.rewritePath("^/sale", ""))
                         .uri("http://localhost:8085/"))
+                .route("ecommerce-order-service", r ->r.path("/order/**")
+                        .filters(f -> f.rewritePath("^/order", ""))
+                        .uri("http://localhost:8086/"))*/
                 .build();
     }
 }

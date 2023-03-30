@@ -1,6 +1,8 @@
 package com.kemane.microservice.controller;
 
+
 import com.kemane.microservice.model.Order;
+import com.kemane.microservice.model.User;
 import com.kemane.microservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,13 +14,13 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api/v1/orders")
 public class OrderController {
 
     @Autowired
     private OrderService orderService;
 
-    @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/create")
     public ResponseEntity<Order> saveOrder(@RequestBody Order order){
         Order newOrder = orderService.addOrder(order);
 
