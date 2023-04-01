@@ -1,6 +1,15 @@
 version: '3'
 services:
-  
+
+  api-gateway:
+    container_name: api-gateway
+    build: ./ecommerce-api-gateway
+    restart: always
+    ports:
+      - 8082:8082
+    networks:
+      - my-network
+
   config-server:
     container_name: config-server
     build: ./ecommerce-config-server
@@ -10,6 +19,39 @@ services:
     networks:
       - my-network
  
+   order-service:
+    container_name: order-service
+    build: ./ecommerce-order-service
+    restart: always
+    ports:
+      - 8086:8086
+    networks:
+      - my-network
+    environment:
+      CONFIG_SERVER: http:// 
+      
+   product-service:
+    container_name: product-service
+    build: ./ecommerce-product-service
+    restart: always
+    ports:
+      - 8083:8083
+    networks:
+      - my-network
+    environment:
+      CONFIG_SERVER: http://   
+      
+   sale-service:
+    container_name: sale-service
+    build: ./ecommerce-sale-service
+    restart: always
+    ports:
+      - 8085:8085
+    networks:
+      - my-network
+    environment:
+      CONFIG_SERVER: http://
+      
   registry-service:
     container_name: registry-service
     build: ./ecommerce-service-registry
@@ -18,17 +60,10 @@ services:
       - 8081:8081
     networks:
       - my-network
+    environment:
+      SERVICE_REGISTRY: http://
       
-  api-gateway:
-    container_name: api-gateway
-    build: ./ecommerce-api-gateway
-    restart: always
-    ports:
-      - 8082:8082
-    networks:
-      - my-network
-      
-  user-service:
+   user-service:
     container_name: user-service
     build: ./ecommerce-user-service
     restart: always
@@ -36,11 +71,15 @@ services:
       - 8084:8084
     networks:
       - my-network
+    environment:
+      CONFIG_SERVER: http://
 
   mysqldb:
     image: mysql:5.7
     ports:
      - 3306:3306
+    networks:
+      - my-network
     environment:
       MYSQL_PASSWORD: kemane
       MYSQL_ROOT_PASSWORD: kemane
