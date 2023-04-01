@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: ecommerce-api-gateway
+  cloud:
+    config:
+      uri: http://localhost:8090
