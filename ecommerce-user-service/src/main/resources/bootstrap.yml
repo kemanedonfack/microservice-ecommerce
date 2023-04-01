@@ -3,7 +3,7 @@ spring:
     name: ecommerce-user-service
   cloud:
     config:
-      uri: ${CONFIG_SERVER:#{http://localhost:8090}}
-      profile: ${ENV:#{dev}}
+      uri: ${CONFIG_SERVER:http://localhost:8090}
+      profile: ${ENV:dev}
 server:
   port: 8084

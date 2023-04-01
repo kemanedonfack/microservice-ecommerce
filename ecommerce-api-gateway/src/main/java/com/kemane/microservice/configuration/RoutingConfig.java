@@ -9,14 +9,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RoutingConfig {
 
-    @Value("hostproduct")
-    private String hostproduct;
-    @Value("${hostuser}")
-    private String hostuser;
-    @Value("${hostsale}")
-    private String hostsale;
-    @Value("${hostorder}")
-    private String hostorder;
+    @Value("${service.product}")
+    private String product;
+    @Value("${service.user}")
+    private String user;
+    @Value("${service.sale}")
+    private String sale;
+    @Value("${service.order}")
+    private String order;
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
@@ -24,26 +24,26 @@ public class RoutingConfig {
                 //swagger documentation routes
                 .route("ecommerce-product-service", r ->r.path("/api/v1/docs/products/**")
                         .filters(f -> f.rewritePath("^/api/v1/docs/products", ""))
-                        .uri(hostproduct))
+                        .uri(product))
                 .route("ecommerce-user-service", r ->r.path("/api/v1/docs/users/**")
                         .filters(f -> f.rewritePath("^/api/v1/docs/users", ""))
-                        .uri(hostuser))
+                        .uri(user))
                 .route("ecommerce-sale-service", r ->r.path("/api/v1/docs/sales/**")
                         .filters(f -> f.rewritePath("^/api/v1/docs/sales", ""))
-                        .uri(hostsale))
+                        .uri(sale))
                 .route("ecommerce-order-service", r ->r.path("/api/v1/docs/orders/**")
                         .filters(f -> f.rewritePath("^/api/v1/docs/orders", ""))
-                        .uri(hostorder))
+                        .uri(order))
 
                 // routes
                 .route("ecommerce-product-service", r ->r.path("/api/v1/products/**")
-                        .uri(hostproduct))
+                        .uri(product))
                 .route("ecommerce-user-service", r ->r.path("/api/v1/users/**")
-                        .uri(hostuser))
+                        .uri(user))
                 .route("ecommerce-sale-service", r ->r.path("/api/v1/sales/**")
-                        .uri(hostsale))
+                        .uri(sale))
                 .route("ecommerce-order-service", r ->r.path("/api/v1/orders/**")
-                        .uri(hostorder))
+                        .uri(order))
                 .build();
     }
 }
