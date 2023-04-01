@@ -9,6 +9,9 @@ services:
       - 8082:8082
     networks:
       - my-network
+    environment:
+      CONFIG_SERVER: http://
+      ENV: prod
 
   config-server:
     container_name: config-server
@@ -19,7 +22,7 @@ services:
     networks:
       - my-network
  
-   order-service:
+  order-service:
     container_name: order-service
     build: ./ecommerce-order-service
     restart: always
@@ -28,9 +31,10 @@ services:
     networks:
       - my-network
     environment:
-      CONFIG_SERVER: http:// 
+      CONFIG_SERVER: http://
+      ENV: prod
       
-   product-service:
+  product-service:
     container_name: product-service
     build: ./ecommerce-product-service
     restart: always
@@ -39,9 +43,10 @@ services:
     networks:
       - my-network
     environment:
-      CONFIG_SERVER: http://   
+      CONFIG_SERVER: http://
+      ENV: prod
       
-   sale-service:
+  sale-service:
     container_name: sale-service
     build: ./ecommerce-sale-service
     restart: always
@@ -51,7 +56,8 @@ services:
       - my-network
     environment:
       CONFIG_SERVER: http://
-      
+      ENV: prod
+
   registry-service:
     container_name: registry-service
     build: ./ecommerce-service-registry
@@ -63,7 +69,7 @@ services:
     environment:
       SERVICE_REGISTRY: http://
       
-   user-service:
+  user-service:
     container_name: user-service
     build: ./ecommerce-user-service
     restart: always
@@ -73,6 +79,7 @@ services:
       - my-network
     environment:
       CONFIG_SERVER: http://
+      ENV: prod
 
   mysqldb:
     image: mysql:5.7
