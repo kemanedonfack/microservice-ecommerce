@@ -1,0 +1,55 @@
+version: '3'
+services:
+  
+  config-server:
+    container_name: config-server
+    build: ./ecommerce-config-server
+    restart: always
+    ports:
+      - 8090:8090
+    networks:
+      - my-network
+ 
+  registry-service:
+    container_name: registry-service
+    build: ./ecommerce-service-registry
+    restart: always
+    ports:
+      - 8081:8081
+    networks:
+      - my-network
+      
+  api-gateway:
+    container_name: api-gateway
+    build: ./ecommerce-api-gateway
+    restart: always
+    ports:
+      - 8082:8082
+    networks:
+      - my-network
+      
+  user-service:
+    container_name: user-service
+    build: ./ecommerce-user-service
+    restart: always
+    ports:
+      - 8084:8084
+    networks:
+      - my-network
+
+  mysqldb:
+    image: mysql:5.7
+    ports:
+     - 3306:3306
+    environment:
+      MYSQL_PASSWORD: kemane
+      MYSQL_ROOT_PASSWORD: kemane
+      MYSQL_DATABASE: db_zencaisse
+    restart: always
+    volumes:
+      - mysql-data:/var/lib/mysql
+     
+networks:
+  my-network:
+    driver: bridge
+ 
