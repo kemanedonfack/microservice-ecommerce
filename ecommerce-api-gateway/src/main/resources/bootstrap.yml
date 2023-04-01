@@ -3,9 +3,9 @@ spring:
     name: ecommerce-api-gateway
   cloud:
     config:
-      uri: http://localhost:8090
-      profile: dev
-host: http://localhost
+      uri: http://16.16.90.247:8090
+      profile: prod
+host: http://16.16.90.247
 server:
   port: 8082
 
