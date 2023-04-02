@@ -22,7 +22,7 @@ You can find the full source code of the project at :  [source code](https://git
 
 Let's  briefly explain the folders in the repository
 
-![Capture](https://user-images.githubusercontent.com/70517765/226720738-84c6c466-43ab-40af-923e-ddf208bffc10.PNG)
+![1](https://user-images.githubusercontent.com/70517765/229381005-e16c31ca-a10b-4e80-8c5b-60feb3ba3405.png)
 
 The above screenshot shows the different directories of the source code : 
 - **.gitlab/agents/k8s-cluster** : contains the configurations of our kubernetes agent for server we will discuss in more detail later in this article
