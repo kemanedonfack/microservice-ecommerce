@@ -13,7 +13,7 @@ services:
       - config-server
       - registry-service
     environment:
-      CONFIG_SERVER: http://13.50.101.245:8090
+      CONFIG_SERVER: http://16.171.53.185:8090
       ENV: prod
 
   config-server:
@@ -38,7 +38,7 @@ services:
       - registry-service
       - mysqldb
     environment:
-      CONFIG_SERVER: http://13.50.101.245:8090
+      CONFIG_SERVER: http://16.171.53.185:8090
       ENV: prod
       
   product-service:
@@ -54,7 +54,7 @@ services:
       - registry-service
       - mysqldb
     environment:
-      CONFIG_SERVER: http://13.50.101.245:8090
+      CONFIG_SERVER: http://16.171.53.185:8090
       ENV: prod
       
   sale-service:
@@ -70,7 +70,7 @@ services:
       - registry-service
       - mysqldb
     environment:
-      CONFIG_SERVER: http://13.50.101.245:8090
+      CONFIG_SERVER: http://16.171.53.185:8090
       ENV: prod
 
   registry-service:
@@ -82,7 +82,7 @@ services:
     networks:
       - my-network
     environment:
-      SERVICE_REGISTRY: http://13.50.101.245:8081/eureka
+      SERVICE_REGISTRY: http://16.171.53.185:8081/eureka
       
   user-service:
     container_name: user-service
@@ -97,7 +97,7 @@ services:
       - registry-service
       - mysqldb
     environment:
-      CONFIG_SERVER: http://13.50.101.245:8090
+      CONFIG_SERVER: http://16.171.53.185:8090
       ENV: prod
 
   mysqldb:
