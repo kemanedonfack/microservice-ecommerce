@@ -3,7 +3,8 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-SERVICE_REGISTRY: "url" #http://16.170.251.95:8081/eureka
+SERVICE_REGISTRY: "https://96254c6a-5ec1-4829-afab-f16ab4eb827f-10-244-29-224-30081.spch.r.killercoda.com/eureka"
+#http://16.170.251.95:8081/eureka
 
 image:
   repository: lugar2020/registry-service
