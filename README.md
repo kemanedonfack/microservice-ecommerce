@@ -28,9 +28,12 @@ The above screenshot shows the different directories of the source code :
 - **.gitlab/agents/k8s-cluster** : contains the configurations of our kubernetes agent for server we will discuss in more detail later in this article
 - **ecommerce-api-gateway** : this directory contains the source code of our frontend application developed with the Angular Framework
 - **ecommerce-config-server** : contains the source code of our backend application developed with the Spring boot framework
-- 
+- **ecommerce-order-service** : 
+- **ecommerce-product-service** :
+- **ecommerce-sale-service** : 
+- **ecommerce-service-registry** : 
+- **ecommerce-user-service** :
 - **helm** : contains the different files to deploy our application under kubernetes via Helm
-- **kubernetes** : contains the different files to deploy our application on kubernetes without using Helm
 - **.gitlab-ci.yml** : which is the core of our pipeline is the file where we describe the different steps of our pipeline
 - **docker-compose.yml** : this file allows us to deploy our application under docker
 
