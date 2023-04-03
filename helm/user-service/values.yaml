@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-CONFIG_SERVER: "https://db245a4f-ffaa-43ac-a3fe-f9e0228c9b5e-10-244-29-233-30090.spch.r.killercoda.com"
+CONFIG_SERVER: "https://e38ee09b-2d5c-4578-86f9-3e59b217d29a-10-244-29-242-30090.spch.r.killercoda.com"
 ENV: "prod"
 
 image:

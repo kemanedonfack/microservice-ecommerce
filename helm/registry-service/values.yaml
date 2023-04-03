@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-SERVICE_REGISTRY: "https://db245a4f-ffaa-43ac-a3fe-f9e0228c9b5e-10-244-29-233-30081.spch.r.killercoda.com/eureka"
+SERVICE_REGISTRY: "https://e38ee09b-2d5c-4578-86f9-3e59b217d29a-10-244-29-242-30081.spch.r.killercoda.com/eureka"
 #http://16.170.251.95:8081/eureka
 
 image:
