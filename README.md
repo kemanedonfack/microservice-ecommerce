@@ -42,14 +42,19 @@ The above screenshot shows the different directories of the source code :
 Open the `.gitlab-ci.yml` file located at the root of the repository
 ```
 variables:
-  BACKEND_IMAGE_NAME: lugar2020/spring-backend
-  FRONTEND_IMAGE_NAME: lugar2020/angular-frontend
-
+  GATEWAY_IMAGE_NAME: lugar2020/api-gateway
+  CONFIG_IMAGE_NAME: lugar2020/config-server
+  ORDER_IMAGE_NAME: lugar2020/order-service
+  PRODUCT_IMAGE_NAME: lugar2020/product-service
+  SALE_IMAGE_NAME: lugar2020/sale-service
+  REGISTRY_IMAGE_NAME: lugar2020/registry-service
+  USER_IMAGE_NAME: lugar2020/user-service
+ 
 stages:
   - build_push_image
   - deploy
 
-build_spring_image:
+build_push_microservices_image:
   stage: build_push_image
   image: docker:20.10.16
   services:
@@ -58,45 +63,47 @@ build_spring_image:
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
     - echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin
-    - cd spring-boot-h2-database-crud/
   script: 
-    - docker build -t $BACKEND_IMAGE_NAME .
-    - docker push $BACKEND_IMAGE_NAME
+    - docker build -t $GATEWAY_IMAGE_NAME ecommerce-api-gateway/.
+    - docker push $GATEWAY_IMAGE_NAME
+    - docker build -t $CONFIG_IMAGE_NAME ecommerce-config-server/.
+    - docker push $CONFIG_IMAGE_NAME
+    - docker build -t $ORDER_IMAGE_NAME ecommerce-product-service/.
+    - docker push $ORDER_IMAGE_NAME
+    - docker build -t $PRODUCT_IMAGE_NAME ecommerce-product-service/.
+    - docker push $PRODUCT_IMAGE_NAME
+    - docker build -t $SALE_IMAGE_NAME ecommerce-sale-service/.
+    - docker push $SALE_IMAGE_NAME
+    - docker build -t $REGISTRY_IMAGE_NAME ecommerce-service-registry/.
+    - docker push $REGISTRY_IMAGE_NAME
+    - docker build -t $USER_IMAGE_NAME ecommerce-user-service/.
+    - docker push $USER_IMAGE_NAME
 
-build_angular_image:
-  stage: build_push_image
-  image: docker:20.10.16
-  services:
-    - docker:20.10.16-dind
-  variables:
-    DOCKER_TLS_CERTDIR: "/certs"
-  before_script:
-    - echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin
-    - cd angular-14-crud-example/
-  script: 
-    - docker build -t $FRONTEND_IMAGE_NAME .
-    - docker push $FRONTEND_IMAGE_NAME
-
-deploy_application:
-  stage: deploy
-  image: devth/helm:latest
-  before_script:
-    - cd helm/
-    - kubectl config get-contexts
-    - kubectl config use-context kemanedonfack/microservice-app-deployment:k8s-cluster
-  script: 
-    - helm install --set-string BACKEND_PUBLIC_ACCESS=$BACKEND_PUBLIC_ACCESS frontend angular-frontend
-    - helm install backend spring-backend  
+# deploy_application:
+#   stage: deploy
+#   image: devth/helm:latest
+#   before_script:
+#     - cd helm/
+#     - kubectl config get-contexts
+#     - kubectl config use-context kemanedonfack/microservice-app-deployment:k8s-cluster
+#   script: 
+#     - helm install --set-string BACKEND_PUBLIC_ACCESS=$BACKEND_PUBLIC_ACCESS frontend angular-frontend
+#     - helm install backend spring-backend
 ```
 Now let's dive into our `.gitlab-ci.yml` file to get a better understanding 
 
 ```
 variables:
-  BACKEND_IMAGE_NAME: lugar2020/spring-backend
-  FRONTEND_IMAGE_NAME: lugar2020/angular-frontend
+  GATEWAY_IMAGE_NAME: lugar2020/api-gateway
+  CONFIG_IMAGE_NAME: lugar2020/config-server
+  ORDER_IMAGE_NAME: lugar2020/order-service
+  PRODUCT_IMAGE_NAME: lugar2020/product-service
+  SALE_IMAGE_NAME: lugar2020/sale-service
+  REGISTRY_IMAGE_NAME: lugar2020/registry-service
+  USER_IMAGE_NAME: lugar2020/user-service
 ```
 
-At the top of the file you will find a variable declaring `BACKEND_IMAGE_NAME` and `FRONTEND_IMAGE_NAME` as their names indicate, these are the names of the docker images we will use in our pipeline. You have to create in your docker hub account two repositories to store these images, **don't forget to change lugar2020 to your docker hub ID**.
+At the top of the file you will find a variable declaring, these are the names of the docker images we will use in our pipeline. You have to create in your docker hub account the same repositories to store these images, **don't forget to change lugar2020 to your docker hub ID**.
 
 ```
 stages:
@@ -117,10 +124,21 @@ build_spring_image:
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
     - echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin
-    - cd spring-boot-h2-database-crud/
   script: 
-    - docker build -t $BACKEND_IMAGE_NAME .
-    - docker push $BACKEND_IMAGE_NAME
+    - docker build -t $GATEWAY_IMAGE_NAME ecommerce-api-gateway/.
+    - docker push $GATEWAY_IMAGE_NAME
+    - docker build -t $CONFIG_IMAGE_NAME ecommerce-config-server/.
+    - docker push $CONFIG_IMAGE_NAME
+    - docker build -t $ORDER_IMAGE_NAME ecommerce-product-service/.
+    - docker push $ORDER_IMAGE_NAME
+    - docker build -t $PRODUCT_IMAGE_NAME ecommerce-product-service/.
+    - docker push $PRODUCT_IMAGE_NAME
+    - docker build -t $SALE_IMAGE_NAME ecommerce-sale-service/.
+    - docker push $SALE_IMAGE_NAME
+    - docker build -t $REGISTRY_IMAGE_NAME ecommerce-service-registry/.
+    - docker push $REGISTRY_IMAGE_NAME
+    - docker build -t $USER_IMAGE_NAME ecommerce-user-service/.
+    - docker push $USER_IMAGE_NAME
 ```
 This step in the `.gitlab-ci.yml` file is called build_spring_image and is defined as stage: build_push_image. It builds and pushes the Docker image for the backend done in Spring boot to the docker hub.
 
@@ -130,7 +148,7 @@ This step in the `.gitlab-ci.yml` file is called build_spring_image and is defin
 
 - **variables: DOCKER_TLS_CERTDIR: "/certs"**: defines a `DOCKER_TLS_CERTDIR` environment variable that specifies the TLS certificate directory for Docker.
 
-- **before_script:** a list of commands to be executed before the main task of this step is executed. In this step, there are two commands to execute. The first command is to authenticate to the `Docker registry`. The second command `cd spring-boot-h2-database-crud/` changes the current directory to one containing the backend source code.
+- **before_script:** a list of commands to be executed before the main task of this step is executed. In this step, there is one command to execute. it is to authenticate to the `Docker registry`.
 
 To perform this step perfectly you need to create the variables `DOCKER_PASSWORD` and `DOCKER_LOGIN` in your project. These variables must contain the password and username of your docker hub account. To do this, go to `settings > CI/CD` then `variables`
 
@@ -139,10 +157,8 @@ To perform this step perfectly you need to create the variables `DOCKER_PASSWORD
 ![Capture](https://user-images.githubusercontent.com/70517765/227020591-7e9746be-7a14-42c5-b6dc-38f11205e8d1.PNG)
 
 
-- **script**: the main task of this step. In this step, two Docker commands are executed. The first command `docker build -t $BACKEND_IMAGE_NAME .` builds the Docker image for the backend application using the Dockerfile present in the current directory `spring-boot-h2-database-crud`. The second `docker push $BACKEND_IMAGE_NAME` command pushes the previously built image into the Docker registry specified by the variable `$BACKEND_IMAGE_NAME`.
+- **script**: the main task of this step. In this step for each microservice, two Docker commands are executed. The first command `docker build -t IMAGE_NAME director/.` builds the Docker image for the application using the Dockerfile present in the current directory. The second `docker push IMAGE_NAME` command pushes the previously built image into the Docker registry specified by the variable `IMAGE_NAME`.
 For more information on the configurations of this stage please refer to the official Gitlab CI documentation [here](https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker)
-
-The configurations to be done in the `build_angular_image` step are the same as in the previous `build_spring_image` step
 
 ### Run the first stage
 
