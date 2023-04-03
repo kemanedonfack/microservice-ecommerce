@@ -54,7 +54,7 @@ stages:
   - build_push_image
   - deploy
 
-build_push_microservices_image:
+build_push_microservice_image:
   stage: build_push_image
   image: docker:20.10.16
   services:
@@ -79,16 +79,23 @@ build_push_microservices_image:
     - docker build -t $USER_IMAGE_NAME ecommerce-user-service/.
     - docker push $USER_IMAGE_NAME
 
-# deploy_application:
-#   stage: deploy
-#   image: devth/helm:latest
-#   before_script:
-#     - cd helm/
-#     - kubectl config get-contexts
-#     - kubectl config use-context kemanedonfack/microservice-app-deployment:k8s-cluster
-#   script: 
-#     - helm install --set-string BACKEND_PUBLIC_ACCESS=$BACKEND_PUBLIC_ACCESS frontend angular-frontend
-#     - helm install backend spring-backend
+deploy_application:
+  stage: deploy
+  image: devth/helm:latest
+  before_script:
+    - cd helm/
+    - kubectl config get-contexts
+    - kubectl config use-context kemanedonfack/spring-microservice-deployment:k8s-cluster
+  script: 
+    - helm install mysqldb mysql
+    - helm install config config-server
+    - helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS+"30081/eureka" registry registry-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" gateway api-gateway
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" order order-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" product product-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" sale sale-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" user user-service
+
 ```
 Now let's dive into our `.gitlab-ci.yml` file to get a better understanding 
 
@@ -195,10 +202,16 @@ deploy_application:
   before_script:
     - cd helm/
     - kubectl config get-contexts
-    - kubectl config use-context kemanedonfack/microservice-app-deployment:k8s-cluster
+    - kubectl config use-context kemanedonfack/spring-microservice-deployment:k8s-cluster
   script: 
-    - helm install --set-string BACKEND_PUBLIC_ACCESS=$BACKEND_PUBLIC_ACCESS frontend angular-frontend
-    - helm install backend spring-backend
+    - helm install mysqldb mysql
+    - helm install config config-server
+    - helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS+"30081/eureka" registry registry-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" gateway api-gateway
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" order order-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" product product-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" sale sale-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" user user-service
 ```
 
 - **image: devth/helm:latest** : This step specifies the Docker image to use for this step, which is "devth/helm:latest". This image contains Helm Kubernetes package manager that we will use to deploy our application.
