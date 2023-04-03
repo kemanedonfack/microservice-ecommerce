@@ -26,13 +26,13 @@ Let's  briefly explain the folders in the repository
 
 The above screenshot shows the different directories of the source code : 
 - **.gitlab/agents/k8s-cluster** : contains the configurations of our kubernetes agent for server we will discuss in more detail later in this article
-- **ecommerce-api-gateway** : this directory contains the source code of our frontend application developed with the Angular Framework
-- **ecommerce-config-server** : contains the source code of our backend application developed with the Spring boot framework
-- **ecommerce-order-service** : 
-- **ecommerce-product-service** :
-- **ecommerce-sale-service** : 
-- **ecommerce-service-registry** : 
-- **ecommerce-user-service** :
+- **ecommerce-api-gateway** : This directory contains the code for an API gateway that serves as an entry point for client requests to the microservices.
+- **ecommerce-config-server** : This directory contains the code for a configuration server that centralizes configuration information for the microservices.
+- **ecommerce-order-service** : This directory contains the code for a microservice that handles orders for the ecommerce application.
+- **ecommerce-product-service** : This directory contains the code for a microservice that handles product-related functionality for the ecommerce application.
+- **ecommerce-sale-service** : This directory contains the code for a microservice that handles sales-related functionality for the ecommerce application.
+- **ecommerce-service-registry** : This directory contains the code for a service registry that keeps track of the available microservices in the system.
+- **ecommerce-user-service** : This directory contains the code for a microservice that handles user-related functionality for the ecommerce application.
 - **helm** : contains the different files to deploy our application under kubernetes via Helm
 - **.gitlab-ci.yml** : which is the core of our pipeline is the file where we describe the different steps of our pipeline
 - **docker-compose.yml** : this file allows us to deploy our application under docker
