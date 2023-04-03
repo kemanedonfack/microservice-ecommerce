@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-CONFIG_SERVER: "http://16.171.24.115:30090"
+CONFIG_SERVER: "http://13.53.193.25:30090"
 ENV: "prod"
 
 image:
