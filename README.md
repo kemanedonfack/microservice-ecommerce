@@ -172,7 +172,7 @@ Let's now launch our pipeline for that on your project go on `CI/CD > pipelines`
 
 In the next screen, don't put anything, just click on Run Pipeline. After that you will get the result below. The build_push_image stage worked perfectly
 
-![Capture](https://user-images.githubusercontent.com/70517765/227026981-2b5a30f4-3dcf-426f-9623-d26a388053fe.PNG)
+<img width="457" alt="Capture d’écran 2023-04-03 170146" src="https://user-images.githubusercontent.com/70517765/229564965-f8fcf3ff-1019-43c2-a5f0-02f242240a87.png">
 
 ### deploy stage
 
