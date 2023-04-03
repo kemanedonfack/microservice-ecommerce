@@ -122,7 +122,7 @@ Our pipeline will contain only two steps : **building and publishing** our image
 ### build & push stage
 
 ```
-build_spring_image:
+build_push_microservice_image:
   stage: build_push_image
   image: docker:20.10.16
   services:
