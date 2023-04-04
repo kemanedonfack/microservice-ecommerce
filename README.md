@@ -237,10 +237,11 @@ Now let's run our pipeline one more time and after a while you will get the foll
 
 Great, everything went well, let's check our Kuberntes cluster and our application if everything works as expected.
 
-<img width="587" alt="Capture d’écran 2023-03-23 151133" src="https://user-images.githubusercontent.com/70517765/227255476-ea9171b1-7aad-4187-83f0-ca0ba449120e.png">
+<img width="955" alt="Capture d’écran 2023-04-04 165905" src="https://user-images.githubusercontent.com/70517765/229889012-3f7eb305-6baf-4670-ba2c-b42887bad6d3.png">
 
-<img width="682" alt="Capture d’écran 2023-03-23 160911" src="https://user-images.githubusercontent.com/70517765/227255558-e8266e2a-6899-4bc0-b585-0fdff53ff385.png">
+<img width="938" alt="Capture d’écran 2023-04-04 165351" src="https://user-images.githubusercontent.com/70517765/229889229-367a31b3-5092-42f0-9fa7-364512221a9b.png">
 
-<img width="628" alt="Capture d’écran 2023-03-23 160937" src="https://user-images.githubusercontent.com/70517765/227255609-ba90d1c9-ea33-4e98-beb3-760a8d35de45.png">
+<img width="950" alt="Capture d’écran 2023-04-04 165526" src="https://user-images.githubusercontent.com/70517765/229889286-05f14969-c7f0-44cd-9b31-884518ade70b.png">
 
-<img width="673" alt="Capture d’écran 2023-03-23 161001" src="https://user-images.githubusercontent.com/70517765/227255626-cfa940dd-ec0c-4604-8982-49b7b44569c7.png">
+
+<img width="955" alt="Capture d’écran 2023-04-04 165905" src="https://user-images.githubusercontent.com/70517765/229889326-01730c05-d2e3-424d-b495-501434fc54da.png">
