@@ -188,7 +188,7 @@ In the next screen, don't put anything, just click on Run Pipeline. After that y
 
 In our case we have created a **kubernetes cluster** that we have already connected to our Gitlab project
 
-<img width="745" alt="Capture d’écran 2023-03-23 141809" src="https://user-images.githubusercontent.com/70517765/227216410-84ff8812-6435-47c5-9858-2283201dfada.png">
+![Capture](https://user-images.githubusercontent.com/70517765/229860467-6d2b6c34-4d90-4344-bbc3-96202044b04c.PNG)
 
 The agent configuration file is located in the **.gitlab/agents/k8s-cluster** directory 
 
