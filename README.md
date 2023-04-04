@@ -207,12 +207,12 @@ deploy_application:
   script: 
     - helm install mysqldb mysql
     - helm install config config-server
-    - helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS+"30081/eureka" registry registry-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" gateway api-gateway
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" order order-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" product product-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" sale sale-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" user user-service
+    - helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS:30081/eureka registry registry-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 gateway api-gateway
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 order order-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 product product-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 sale sale-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 user user-service
 ```
 
 - **image: devth/helm:latest** : This step specifies the Docker image to use for this step, which is "devth/helm:latest". This image contains Helm Kubernetes package manager that we will use to deploy our application.
