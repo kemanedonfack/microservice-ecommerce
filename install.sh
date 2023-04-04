@@ -36,7 +36,7 @@ systemctl stop firewalld
 
 kubeadm config images pull
 
-kubeadm init --apiserver-advertise-address=172.31.39.239 --pod-network-cidr=10.244.0.0/16
+kubeadm init --apiserver-advertise-address=172.31.40.99 --pod-network-cidr=10.244.0.0/16
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -60,8 +60,3 @@ helm install sale sale-service
 helm install user user-service
 
 
-
-sudo -i
-swapoff -a
-exit
-strace -eopenat kubectl version
