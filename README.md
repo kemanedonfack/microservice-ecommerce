@@ -90,12 +90,12 @@ deploy_application:
   script: 
     - helm install mysqldb mysql
     - helm install config config-server
-    - helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS+"30081/eureka" registry registry-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" gateway api-gateway
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" order order-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" product product-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" sale sale-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS+"30090" user user-service
+    - helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS:30081/eureka registry registry-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 gateway api-gateway
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 order order-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 product product-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 sale sale-service
+    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 user user-service
 
 ```
 Now let's dive into our `.gitlab-ci.yml` file to get a better understanding 
