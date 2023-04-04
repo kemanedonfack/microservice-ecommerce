@@ -21,8 +21,7 @@ To perform this demo, you will need to have the following prerequisites:
 You can find the full source code of the project at :  [source code](https://github.com/kemanedonfack/community/tree/master/kubernetes/microservice-deployment-kubernetes-gitlab-helm) so put all the content in your own repository.
 
 Let's  briefly explain the folders in the repository
-
-![1](https://user-images.githubusercontent.com/70517765/229381005-e16c31ca-a10b-4e80-8c5b-60feb3ba3405.png)
+![4525](https://user-images.githubusercontent.com/70517765/229854543-4484940f-8a77-4a5c-b06d-652ade72f531.PNG)
 
 The above screenshot shows the different directories of the source code : 
 - **.gitlab/agents/k8s-cluster** : contains the configurations of our kubernetes agent for server we will discuss in more detail later in this article
@@ -34,6 +33,7 @@ The above screenshot shows the different directories of the source code :
 - **ecommerce-service-registry** : This directory contains the code for a service registry that keeps track of the available microservices in the system.
 - **ecommerce-user-service** : This directory contains the code for a microservice that handles user-related functionality for the ecommerce application.
 - **helm** : contains the different files to deploy our application under kubernetes via Helm
+- **kubernetes** : contains the different files to deploy our application on kubernetes without using Helm
 - **.gitlab-ci.yml** : which is the core of our pipeline is the file where we describe the different steps of our pipeline
 - **docker-compose.yml** : this file allows us to deploy our application under docker
 
