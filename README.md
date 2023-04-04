@@ -237,7 +237,7 @@ Now let's run our pipeline one more time and after a while you will get the foll
 
 Great, everything went well, let's check our Kuberntes cluster and our application if everything works as expected.
 
-<img width="955" alt="Capture d’écran 2023-04-04 165905" src="https://user-images.githubusercontent.com/70517765/229889012-3f7eb305-6baf-4670-ba2c-b42887bad6d3.png">
+<img width="559" alt="Capture d’écran 2023-04-04 170023" src="https://user-images.githubusercontent.com/70517765/229890144-4cff669c-4be6-4b98-8980-2555bddce328.png">
 
 <img width="938" alt="Capture d’écran 2023-04-04 165351" src="https://user-images.githubusercontent.com/70517765/229889229-367a31b3-5092-42f0-9fa7-364512221a9b.png">
 
