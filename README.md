@@ -18,7 +18,7 @@ To perform this demo, you will need to have the following prerequisites:
 
 ## Step 1 : Create your own repository
 
-You can find the full source code of the project at :  [source code](https://github.com/kemanedonfack/community/tree/master/kubernetes/microservice-deployment-kubernetes-gitlab-helm) so put all the content in your own repository.
+We have two repositories. The first one is to store the source code of our microservice you will find it [here](https://github.com/kemanedonfack/community/tree/master/kubernetes/microservice-deployment-kubernetes-gitlab-helm) and the order is for the externalisation of our configurations file with Spring Cloud Config Server you will find the code [here](https://) .
 
 Let's  briefly explain the folders in the repository
 
@@ -38,6 +38,8 @@ The above screenshot shows the different directories of the source code :
 - **kubernetes** : contains the different files to deploy our application on kubernetes without using Helm
 - **.gitlab-ci.yml** : which is the core of our pipeline is the file where we describe the different steps of our pipeline
 - **docker-compose.yml** : this file allows us to deploy our application under docker
+- **ecommerce-api-gateway-dev.yml**: This file content all the configuration for the api gateway on dev(development) environnement
+- **ecommerce-api-gateway-prod.yml**: This file content all the configuration for the api gateway on prod(production) environnement
 
 ## Step 2 : Configuration of Gitlab CI
 
