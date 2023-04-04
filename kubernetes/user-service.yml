@@ -21,7 +21,7 @@ spec:
         - containerPort: 8084
         env:
         - name: CONFIG_SERVER
-          value: "https://2f5d143d-23e8-4b55-9ff7-ee17dcad4c6f-10-244-29-79-30090.spch.r.killercoda.com"
+          value: "http://16.16.25.144:30090"
         - name: ENV
           value: "prod"
 

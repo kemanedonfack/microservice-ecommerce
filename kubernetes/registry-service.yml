@@ -21,7 +21,7 @@ spec:
         - containerPort: 8081
         env:
         - name: SERVICE_REGISTRY
-          value: "https://2f5d143d-23e8-4b55-9ff7-ee17dcad4c6f-10-244-29-79-30081.spch.r.killercoda.com/eureka"
+          value: "http://16.16.25.144:30081/eureka"
 
 ---
 
