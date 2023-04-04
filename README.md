@@ -224,9 +224,9 @@ deploy_application:
     - **helm install --set-string SERVICE_REGISTRY=$SERVICE_REGISTRY registry registry-service**: This command installs a Eureka service registry using the registry-service Helm chart, by setting the `SERVICE_REGISTRY` environment variable value.
     - **helm install --set-string CONFIG_SERVER=$CONFIG_SERVER gateway api-gateway**: This command installs an API gateway using the api-gateway Helm chart, by setting the `CONFIG_SERVER` environment variable value.
    
-you have to create two variables `SERVICE_REGISTRY` and `CONFIG_SERVER` who will content the link to each services. You should have somethings like that `http://16.170.253.192:30081/eureka` and `http://16.170.253.192:30090`
+you have to create two variables `SERVICE_REGISTRY` and `CONFIG_SERVER` who will content the link to each services. You should have respectifly somethings like that `http://16.170.253.192:30081/eureka` and `http://16.170.253.192:30090`
 
-<img width="563" alt="Capture d’écran 2023-03-23 162841" src="https://user-images.githubusercontent.com/70517765/227253306-78f4071a-b9d4-431d-9c03-0a23e747a5bd.png">
+![jkkkop](https://user-images.githubusercontent.com/70517765/229897444-14495bc1-1fc1-4d74-9fef-55fb14a16086.PNG)
 
 ## Step 3 : Launch our pipeline
 
