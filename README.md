@@ -220,11 +220,11 @@ deploy_application:
 - **before_script** : This step defines the commands to be executed before the main script is executed. In this case, there are three commands executed. First, we move to the "helm" directory which contains the Helm files. Next, we use the `kubectl config get-contexts` command to display the list of available Kubernetes contexts. Finally, we use the `kubectl config use-context` command to select the Kubernetes context to use for the deployment which is the one of our agent.
 
 - **script** : These commands use the Helm package manager to install applications based on Helm charts. Here is a brief description of each command: 
-    - helm install mysqldb mysql: This command installs a MySQL instance using the mysql Helm chart.
-    - helm install config config-server: This command installs a configuration server using the config-server Helm chart.
-    - helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS:30081/eureka registry registry-service: This command installs a Eureka service registry using the registry-service Helm chart, by setting the SERVICE_REGISTRY environment variable value.
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 gateway api-gateway: This command installs an API gateway using the api-gateway Helm chart, by setting the CONFIG_SERVER environment variable value.
-    
+    - **helm install mysqldb mysql**: This command installs a MySQL instance using the mysql Helm chart.
+    - **helm install config config-server**: This command installs a configuration server using the `config-server` Helm chart.
+    - **helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS:30081/eureka registry registry-service**: This command installs a Eureka service registry using the registry-service Helm chart, by setting the `SERVICE_REGISTRY` environment variable value.
+    - **helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 gateway api-gateway**: This command installs an API gateway using the api-gateway Helm chart, by setting the `CONFIG_SERVER` environment variable value.
+   
 we have added a variable `IP_ADDRESS` who is our public ip address. It's important in order to be able to access at our application so you have to create it. 
 
 <img width="563" alt="Capture d’écran 2023-03-23 162841" src="https://user-images.githubusercontent.com/70517765/227253306-78f4071a-b9d4-431d-9c03-0a23e747a5bd.png">
