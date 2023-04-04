@@ -24,7 +24,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           value: kemane
         - name: MYSQL_DATABASE
-          value: "microservice-ecommerce"
+          value: microservice-ecommerce
 
 ---
 

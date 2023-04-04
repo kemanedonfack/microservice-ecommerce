@@ -21,7 +21,7 @@ spec:
         - containerPort: 8083
         env:
         - name: CONFIG_SERVER
-          value: "http://localhost:9090/api/tutorials"
+          value: "https://2f5d143d-23e8-4b55-9ff7-ee17dcad4c6f-10-244-29-79-30090.spch.r.killercoda.com"
         - name: ENV
           value: "prod"
 
