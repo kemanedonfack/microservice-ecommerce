@@ -90,13 +90,12 @@ deploy_application:
   script: 
     - helm install mysqldb mysql
     - helm install config config-server
-    - helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS:30081/eureka registry registry-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 gateway api-gateway
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 order order-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 product product-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 sale sale-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 user user-service
-
+    - helm install --set-string SERVICE_REGISTRY=$SERVICE_REGISTRY registry registry-service
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER gateway api-gateway
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER order order-service
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER product product-service
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER sale sale-service
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER user user-service
 ```
 Now let's dive into our `.gitlab-ci.yml` file to get a better understanding 
 
@@ -207,12 +206,12 @@ deploy_application:
   script: 
     - helm install mysqldb mysql
     - helm install config config-server
-    - helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS:30081/eureka registry registry-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 gateway api-gateway
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 order order-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 product product-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 sale sale-service
-    - helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 user user-service
+    - helm install --set-string SERVICE_REGISTRY=$SERVICE_REGISTRY registry registry-service
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER gateway api-gateway
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER order order-service
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER product product-service
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER sale sale-service
+    - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER user user-service
 ```
 
 - **image: devth/helm:latest** : This step specifies the Docker image to use for this step, which is "devth/helm:latest". This image contains Helm Kubernetes package manager that we will use to deploy our application.
@@ -222,10 +221,10 @@ deploy_application:
 - **script** : These commands use the Helm package manager to install applications based on Helm charts. Here is a brief description of each command: 
     - **helm install mysqldb mysql**: This command installs a MySQL instance using the mysql Helm chart.
     - **helm install config config-server**: This command installs a configuration server using the `config-server` Helm chart.
-    - **helm install --set-string SERVICE_REGISTRY=$IP_ADDRESS:30081/eureka registry registry-service**: This command installs a Eureka service registry using the registry-service Helm chart, by setting the `SERVICE_REGISTRY` environment variable value.
-    - **helm install --set-string CONFIG_SERVER=$IP_ADDRESS:30090 gateway api-gateway**: This command installs an API gateway using the api-gateway Helm chart, by setting the `CONFIG_SERVER` environment variable value.
+    - **helm install --set-string SERVICE_REGISTRY=$SERVICE_REGISTRY registry registry-service**: This command installs a Eureka service registry using the registry-service Helm chart, by setting the `SERVICE_REGISTRY` environment variable value.
+    - **helm install --set-string CONFIG_SERVER=$CONFIG_SERVER gateway api-gateway**: This command installs an API gateway using the api-gateway Helm chart, by setting the `CONFIG_SERVER` environment variable value.
    
-we have added a variable `IP_ADDRESS` who is our public ip address. It's important in order to be able to access at our application so you have to create it. 
+you have to create two variables `SERVICE_REGISTRY` and `CONFIG_SERVER` who will content the link to each services. You should have somethings like that `http://16.170.253.192:30081/eureka` and `http://16.170.253.192:30090`
 
 <img width="563" alt="Capture d’écran 2023-03-23 162841" src="https://user-images.githubusercontent.com/70517765/227253306-78f4071a-b9d4-431d-9c03-0a23e747a5bd.png">
 
