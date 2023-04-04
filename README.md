@@ -233,7 +233,7 @@ we have added a variable `IP_ADDRESS` who is our public ip address. It's importa
 
 Now let's run our pipeline one more time and after a while you will get the following result
 
-<img width="743" alt="Capture d’écran 2023-03-23 143606" src="https://user-images.githubusercontent.com/70517765/227220786-1ced4fac-c99c-48e4-9525-c0a87428298e.png">
+![54547](https://user-images.githubusercontent.com/70517765/229869161-7370c83a-e85c-40eb-916e-a2427a03c2f8.PNG)
 
 Great, everything went well, let's check our Kuberntes cluster and our application if everything works as expected.
 
