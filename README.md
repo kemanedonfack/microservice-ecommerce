@@ -231,8 +231,6 @@ you have to create two variables `SERVICE_REGISTRY` and `CONFIG_SERVER` who will
 
 <img width="702" alt="Capture d’écran 2023-04-06 101132" src="https://user-images.githubusercontent.com/70517765/230338945-3e65ad36-a048-4016-a607-d15a4f9a8b2a.png">
 
-![jkkkop](https://user-images.githubusercontent.com/70517765/229897444-14495bc1-1fc1-4d74-9fef-55fb14a16086.PNG)
-
 **Important** : You should also update the service registry link into your second repository as well for the api to each microservice. Update only into production(prod) configuration file 
 
 ## Step 3 : Launch our pipeline
