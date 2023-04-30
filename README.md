@@ -264,3 +264,12 @@ Great, everything went well, let's check our Kuberntes cluster and our applicati
 <img width="950" alt="Capture d’écran 2023-04-04 165526" src="https://user-images.githubusercontent.com/70517765/229889286-05f14969-c7f0-44cd-9b31-884518ade70b.png">
 
 <img width="955" alt="Capture d’écran 2023-04-04 165905" src="https://user-images.githubusercontent.com/70517765/229889326-01730c05-d2e3-424d-b495-501434fc54da.png">
+
+## Conclusion
+
+In conclusion, deploying **microservices** to a Kubernetes cluster with Helm via **GitLab CI** can be a powerful way to automate the building, testing, and deployment of your applications. With the use of **Helm**, we can easily install, upgrade, and manage applications in a **Kubernetes cluster** by defining the structure and configuration of an application through charts.
+
+By following the steps outlined in this article, you can set up a robust **CI/CD pipeline** to automate the deployment of your microservices to Kubernetes. With the ability to quickly and efficiently deploy applications, you can streamline your development process and increase productivity.
+
+Overall, the combination of GitLab CI, Kubernetes, and Helm provides a reliable and scalable solution for deploying microservices in a modern software development environment. By leveraging these technologies, developers can focus on writing code, and let the automation handle the rest.
+
