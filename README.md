@@ -16,6 +16,14 @@ To perform this demo, you will need to have the following prerequisites:
 
 [**Helm chart**](https://helm.sh/docs/topics/charts/#:~:text=Helm%20uses%20a%20packaging%20format,%2C%20caches%2C%20and%20so%20on.) is a package that contains all the Kubernetes manifests, configuration files and dependencies needed to install and run an application on a Kubernetes cluster. It defines the structure and configuration of an application, including items such as environment variables, ports, volumes and service dependencies.
 
+Advantages of using Helm for deployment on a Kubernetes cluster:
+
+- **Simplified deployment** : Helm provides a simple and efficient way to package and deploy applications to Kubernetes clusters, making it easier for developers and operators to manage complex deployments.
+- **Version control** : Helm charts are version-controlled, which enables easy rollback to previous versions in case of issues or errors.
+- **Reusability** : Helm charts can be easily shared and reused across different teams, enabling better collaboration and productivity.
+- **Modular architecture** : Helm charts have a modular architecture, allowing you to separate and manage different components of an application separately, making it easier to maintain and upgrade individual components without affecting the entire application.
+- **Template engine** : Helm uses a template engine that allows you to define variables and dynamically generate Kubernetes manifests, which can be customized for different environments, reducing the need for repetitive manual configuration.
+
 ## Step 1 : Create your own repository
 
 You should create two repositories. The first one is used to store the source code of our microservices, and the other one is used to externalize our configuration files with **Spring Cloud Config Server** you will find all code [here](https://github.com/kemanedonfack/community/tree/master/kubernetes/spring-microservice-deployment-gitlab).
