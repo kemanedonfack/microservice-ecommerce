@@ -18,7 +18,7 @@ To perform this demo, you will need to have the following prerequisites:
 
 ## Step 1 : Create your own repository
 
-We have two repositories. The first one is to store the source code of our microservices you will find it [here](https://github.com/kemanedonfack/community/tree/master/kubernetes/microservice-deployment-kubernetes-gitlab-helm) and the other is for the externalisation of our configurations files with **Spring Cloud Config Server** you will find the code [here](https://) .
+We have two repositories. The first one is used to store the source code of our microservices, you can find it [here](https://github.com/kemanedonfack/community/tree/master/kubernetes/microservice-deployment-kubernetes-gitlab-helm) and the other one is used to externalize our configuration files with **Spring Cloud Config Server**, you can find the code [here](https://).
 
 Let's  briefly explain the folders in the repository
 
@@ -27,19 +27,21 @@ Let's  briefly explain the folders in the repository
 
 The above screenshot shows the different directories of the source code : 
 - **.gitlab/agents/k8s-cluster** : contains the configurations of our kubernetes agent for server we will discuss in more detail later in this article
-- **ecommerce-api-gateway** : This directory contains the code for an API gateway that serves as an entry point for client requests to the microservices.
-- **ecommerce-config-server** : This directory contains the code for a configuration server that centralizes configuration information for the microservices.
-- **ecommerce-order-service** : This directory contains the code for a microservice that handles orders for the ecommerce application.
-- **ecommerce-product-service** : This directory contains the code for a microservice that handles product-related functionality for the ecommerce application.
-- **ecommerce-sale-service** : This directory contains the code for a microservice that handles sales-related functionality for the ecommerce application.
-- **ecommerce-service-registry** : This directory contains the code for a service registry that keeps track of the available microservices in the system.
-- **ecommerce-user-service** : This directory contains the code for a microservice that handles user-related functionality for the ecommerce application.
+- **ecommerce-api-gateway** : This directory contains the code for our API gateway that serves as an entry point for client requests to the microservices.
+- **ecommerce-config-server** : This directory contains the code for our configuration server that centralizes configuration information for the microservices.
+- **ecommerce-order-service** : This directory contains the code for our microservice that handles orders for the ecommerce application.
+- **ecommerce-product-service** : This directory contains the code for our microservice that handles product-related functionality for the ecommerce application.
+- **ecommerce-sale-service** : This directory contains the code for our microservice that handles sales-related functionality for the ecommerce application.
+- **ecommerce-service-registry** : This directory contains the code for our service registry that keeps track of the available microservices in the system.
+- **ecommerce-user-service** : This directory contains the code for our microservice that handles user-related functionality for the ecommerce application.
 - **helm** : contains the different files to deploy our application under kubernetes via Helm
 - **kubernetes** : contains the different files to deploy our application on kubernetes without using Helm
 - **.gitlab-ci.yml** : which is the core of our pipeline is the file where we describe the different steps of our pipeline
 - **docker-compose.yml** : this file allows us to deploy our application under docker
-- **ecommerce-api-gateway-dev.yml** : This file content all the configuration for the api gateway on dev(development) environnement
-- **ecommerce-api-gateway-prod.yml** : This file content all the configuration for the api gateway on prod(production) environnement
+- **ecommerce-api-gateway-dev.yml** : This file contains all the configurations of the gateway api in the dev environment (development)
+- **ecommerce-api-gateway-prod.yml** : This file contains all the gateway api configurations in the prod(production) environment
+
+**Important** : You must have these two repositories in your own repository 
 
 ## Step 2 : Configuration of Gitlab CI
 
@@ -92,13 +94,14 @@ deploy_application:
     - kubectl config use-context kemanedonfack/spring-microservice-deployment:k8s-cluster
   script: 
     - helm install mysqldb mysql
-    - helm install config config-server
+    - helm install --set-string GIT_URL_CONFIG=$GIT_URL_CONFIG config config-server
     - helm install --set-string SERVICE_REGISTRY=$SERVICE_REGISTRY registry registry-service
     - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER gateway api-gateway
     - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER order order-service
     - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER product product-service
     - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER sale sale-service
     - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER user user-service
+
 ```
 Now let's dive into our `.gitlab-ci.yml` file to get a better understanding 
 
@@ -113,7 +116,7 @@ variables:
   USER_IMAGE_NAME: lugar2020/user-service
 ```
 
-At the top of the file you will find a variable declaring, these are the names of the docker images we will use in our pipeline. You have to create in your docker hub account the same repositories to store these images, **don't forget to change lugar2020 to your docker hub ID**.
+At the top of the file you will find a declaration of variables, these are the names of the docker images we will use in our pipeline. You have to create in your docker hub account the same repositories to store these images, **don't forget to change lugar2020 to your docker hub ID**.
 
 ```
 stages:
@@ -150,7 +153,7 @@ build_push_microservice_image:
     - docker build -t $USER_IMAGE_NAME ecommerce-user-service/.
     - docker push $USER_IMAGE_NAME
 ```
-This step in the `.gitlab-ci.yml` file is called build_spring_image and is defined as stage: build_push_image. It builds and pushes the Docker image for the backend done in Spring boot to the docker hub.
+This step in the `.gitlab-ci.yml` file is called build_push_microservice_image and is defined as stage: build_push_image. It builds and pushes the Docker image for the microservices done in Spring boot to the docker hub.
 
 - **image: docker:20.10.16** : uses the docker image docker:20.10.16 as the runtime environment for this step. Since we will have to execute docker commands we need a docker client and docker daemon which are available in this image. In this part we use the docker in docker concept for more information [see the article](https://blog.packagecloud.io/3-methods-to-run-docker-in-docker-containers/#:~:text=Docker%20In%20Docker%20)
 
@@ -160,19 +163,19 @@ This step in the `.gitlab-ci.yml` file is called build_spring_image and is defin
 
 - **before_script:** a list of commands to be executed before the main task of this step is executed. In this step, there is one command to execute. it is to authenticate to the `Docker registry`.
 
-To perform this step perfectly you need to create the variables `DOCKER_PASSWORD` and `DOCKER_LOGIN` in your project. These variables must contain the password and username of your docker hub account. To do this, go to `settings > CI/CD` then `variables`
+To perform this step perfectly you need to create the variables `DOCKER_PASSWORD` and `DOCKER_LOGIN` in your project. These variables must contain the password and username of your docker hub account. To do this, go to `settings > CI/CD` then `variables`. **Don't forget to set them as protected because they are sensitive**.
 
 <img width="341" alt="1" src="https://user-images.githubusercontent.com/70517765/226735876-f1236c68-ef6f-43da-940b-477f1cfb8555.png">
 
 ![Capture](https://user-images.githubusercontent.com/70517765/227020591-7e9746be-7a14-42c5-b6dc-38f11205e8d1.PNG)
 
 
-- **script**: the main task of this step. In this step for each microservice, two Docker commands are executed. The first command `docker build -t IMAGE_NAME director/.` builds the Docker image for the application using the Dockerfile present in the current directory. The second `docker push IMAGE_NAME` command pushes the previously built image into the Docker registry specified by the variable `IMAGE_NAME`.
+- **script**: the main task of this step. In this step for each microservice, two Docker commands are executed. The first command `docker build -t IMAGE_NAME directory/.` builds the Docker image for the application using the Dockerfile present in the current directory. The second `docker push IMAGE_NAME` command pushes the previously built image into the Docker registry specified by the variable `IMAGE_NAME`.
 For more information on the configurations of this stage please refer to the official Gitlab CI documentation [here](https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker)
 
 ### Run the first stage
 
-**important** : Before you start you need to make sure you can use the gitlab shared runners that we will use in this demo. If not, you can add our own runner to the project. To do this in your project go to `settings > CI/CD` then `Runners` then disable the shared runners and add your own by following the steps provided.
+**important** : Before you start you need to make sure you can use the gitlab shared runners that we will use in this demo. If not, you can add your own runner to the project. To do this in your project go to `settings > CI/CD` then `Runners` then disable the shared runners and add your own by following the steps provided.
 
 To be able to use the shared runners of gitlab you must validate your gitlab account. Launch the pipeline then a button to validate account will appear then you must add a credit card containing **1$**. Then you will have access to the gitlab shared runners in all your projects. 
 
@@ -208,7 +211,7 @@ deploy_application:
     - kubectl config use-context kemanedonfack/spring-microservice-deployment:k8s-cluster
   script: 
     - helm install mysqldb mysql
-    - helm install config config-server
+    - helm install --set-string GIT_URL_CONFIG=$GIT_URL_CONFIG config config-server
     - helm install --set-string SERVICE_REGISTRY=$SERVICE_REGISTRY registry registry-service
     - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER gateway api-gateway
     - helm install --set-string CONFIG_SERVER=$CONFIG_SERVER order order-service
@@ -223,15 +226,18 @@ deploy_application:
 
 - **script** : These commands use the Helm package manager to install applications based on Helm charts. Here is a brief description of each command: 
     - **helm install mysqldb mysql**: This command installs a MySQL instance using the mysql Helm chart.
-    - **helm install config config-server**: This command installs a configuration server using the `config-server` Helm chart.
+    - **helm install --set-string GIT_URL_CONFIG=$GIT_URL_CONFIG config config-server**: This command installs a configuration server using the `config-server` Helm chart, by setting the `GIT_URL_CONFIG` environment variable value.
     - **helm install --set-string SERVICE_REGISTRY=$SERVICE_REGISTRY registry registry-service**: This command installs a Eureka service registry using the registry-service Helm chart, by setting the `SERVICE_REGISTRY` environment variable value.
     - **helm install --set-string CONFIG_SERVER=$CONFIG_SERVER gateway api-gateway**: This command installs an API gateway using the api-gateway Helm chart, by setting the `CONFIG_SERVER` environment variable value.
    
-you have to create two variables `SERVICE_REGISTRY` and `CONFIG_SERVER` who will content the link to each services. You should have respectifly somethings like that `http://16.170.253.192:30081/eureka` and `http://16.170.253.192:30090`
+You need to create three variables `SERVICE_REGISTRY`, `CONFIG_SERVER` AND `GIT_URL_CONFIG`. **SERVICE_REGISTRY** contains the link to the service registry application something like  `http://16.170.253.192:30081/eureka`. 
+**CONFIG_SERVER** contains the link to the configuration server something like `http://16.170.253.192:30090` 
+**GIT_URL_CONFIG** contains the link to the repository containing the configuration files something like `https://github.com/kemanedonfack/ecommerce-configurations.git`
 
 <img width="702" alt="Capture d’écran 2023-04-06 101132" src="https://user-images.githubusercontent.com/70517765/230338945-3e65ad36-a048-4016-a607-d15a4f9a8b2a.png">
 
-**Important** : You should also update the service registry link into your second repository as well for the api to each microservice. Update only into production(prod) configuration file 
+
+**Important** : You must also modify the different ip address and link to the registry service in your second repository. For each microservice, modify only in the production configuration file (prod).
 
 ## Step 3 : Launch our pipeline
 
@@ -246,6 +252,5 @@ Great, everything went well, let's check our Kuberntes cluster and our applicati
 <img width="938" alt="Capture d’écran 2023-04-04 165351" src="https://user-images.githubusercontent.com/70517765/229889229-367a31b3-5092-42f0-9fa7-364512221a9b.png">
 
 <img width="950" alt="Capture d’écran 2023-04-04 165526" src="https://user-images.githubusercontent.com/70517765/229889286-05f14969-c7f0-44cd-9b31-884518ade70b.png">
-
 
 <img width="955" alt="Capture d’écran 2023-04-04 165905" src="https://user-images.githubusercontent.com/70517765/229889326-01730c05-d2e3-424d-b495-501434fc54da.png">
