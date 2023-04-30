@@ -189,12 +189,11 @@ In the next screen, don't put anything, just click on Run Pipeline. After that y
 
 ### deploy stage
 
-**important**: In this step you will need a working Kubernetes cluster with Helm installed, then you will need to connect your cluster to gitlab. To do this you need to install an agent for Kubernetes in your cluster, go to `Infrastructure > Kubernetes clusters` click on `connect a cluster` then follow the steps, the name of our Kubernetes cluster is `k8s-cluster`. For more information, see the official documentation [here](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#register-the-agent-with-gitlab). 
-
 In my case, I used a **kubernetes cluster** on killercoda that I already connected to my Gitlab CI project [my cluster](https://killercoda.com/helm/scenario/use). 
-
-### What is Killercoda
+#### What is Killercoda
 [Killercoda](https://killercoda.com/) is a place where you open your browser and get instant access to a real Linux or Kubernetes environment ready to use. These environments are maintained remotely and accessed locally, hence no setup or huge resource usage in local browsers. As a user you can learn from existing scenarios and as a creator you can provide scenarios to teach any kind of tools or technologies.
+
+**important**: In this step you will need a working Kubernetes cluster with Helm installed, then you will need to connect your cluster to gitlab. To do this you need to install an agent for Kubernetes in your cluster, go to `Infrastructure > Kubernetes clusters` click on `connect a cluster` then follow the steps, the name of our Kubernetes cluster is `k8s-cluster`. For more information, see the official documentation [here](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#register-the-agent-with-gitlab). 
 
 ![Capture](https://user-images.githubusercontent.com/70517765/229860467-6d2b6c34-4d90-4344-bbc3-96202044b04c.PNG)
 
