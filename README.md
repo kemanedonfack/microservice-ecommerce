@@ -18,7 +18,7 @@ To perform this demo, you will need to have the following prerequisites:
 
 ## Step 1 : Create your own repository
 
-We have two repositories. The first one is used to store the source code of our microservices, you can find it [here](https://github.com/kemanedonfack/community/tree/master/kubernetes/microservice-deployment-kubernetes-gitlab-helm) and the other one is used to externalize our configuration files with **Spring Cloud Config Server**, you can find the code [here](https://).
+You should create two repositories. The first one is used to store the source code of our microservices, and the other one is used to externalize our configuration files with **Spring Cloud Config Server** you will find all code [here](https://github.com/kemanedonfack/community/tree/master/kubernetes/microservice-deployment-kubernetes-gitlab-helm).
 
 Let's  briefly explain the folders in the repository
 
