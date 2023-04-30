@@ -49,7 +49,7 @@ The above screenshot shows the different directories of the source code :
   - **ecommerce-api-gateway-dev.yml** : This file contains all the configurations of the gateway api in the dev environment (development)
   - **ecommerce-api-gateway-prod.yml** : This file contains all the gateway api configurations in the prod(production) environment
 
-**Important** : You must have these two repositories in your own repository 
+**Important** : You must have the two repositories mentioned
 
 ## Step 2 : Configuration of Gitlab CI
 
