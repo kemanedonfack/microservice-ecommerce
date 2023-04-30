@@ -37,8 +37,9 @@ The above screenshot shows the different directories of the source code :
 - **kubernetes** : contains the different files to deploy our application on kubernetes without using Helm
 - **.gitlab-ci.yml** : which is the core of our pipeline is the file where we describe the different steps of our pipeline
 - **docker-compose.yml** : this file allows us to deploy our application under docker
-- **ecommerce-api-gateway-dev.yml** : This file contains all the configurations of the gateway api in the dev environment (development)
-- **ecommerce-api-gateway-prod.yml** : This file contains all the gateway api configurations in the prod(production) environment
+- **microservices-configuration** : this folder must be stored in another repository, it contains the configuration files of our different microservices such as :
+  - **ecommerce-api-gateway-dev.yml** : This file contains all the configurations of the gateway api in the dev environment (development)
+  - **ecommerce-api-gateway-prod.yml** : This file contains all the gateway api configurations in the prod(production) environment
 
 **Important** : You must have these two repositories in your own repository 
 
